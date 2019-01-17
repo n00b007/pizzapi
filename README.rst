@@ -32,20 +32,27 @@ First go to code_for_pizza/dominos_test_order.py and change the details in Custo
 
 The details already entered in the python file are a sample and do not actually work.
 
-Just replace the details inside the Customer block to yours.
+Just replace the details inside the ``Customer`` block to yours.
+
+.. code-block:: python
+
+    customer = Customer('Barack', 'Obama', 'barack@whitehouse.gov', '2024561111', '700 Pennsylvania Avenue NW, Washington, DC, 20408')
 
 .. code-block:: python3
-customer = Customer('Barack', 'Obama', 'barack@whitehouse.gov', '2024561111', '700 Pennsylvania Avenue NW, Washington, DC, 20408')
+    
+    customer = Customer('Barack', 'Obama', 'barack@whitehouse.gov', '2024561111', '700 Pennsylvania Avenue NW, Washington, DC, 20408')
 
 Now switch over to code_for_pizza/order_pizza.py and add your github user_id and password.
 
 .. code-block:: python3
-g = Github('your_username','your_password')
+
+    g = Github('your_username','your_password')
 
 Then simply type the following command from the pizzapy folder, which is one folder up:
 
-.. code-block:: python3
-python3 code_for_pizza/order_pizza.py
+.. code-block:: bash
+
+    python3 code_for_pizza/order_pizza.py
 
 And just like that it should place the order for you !
 
@@ -54,4 +61,5 @@ Optional Step:
 
 1. You can put the user_id and password in a config file and read it programmatically from the python script,
 than just hardcoding it.
+
 2. Integrate twilio's API to send an SMS alert when an order is placed.
