@@ -133,6 +133,7 @@ setup(
         'pyhamcrest',
         'requests', 
         'xmltodict',
+        'pygithub',
     ],
     include_package_data=True,
     tests_require=[

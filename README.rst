@@ -3,10 +3,10 @@ pizzapy
 
 Disclaimer
 -----------
-This is my fork of https://github.com/gamagori/pizzapi
-It's heavily modified and not well documented, but i'm going to get to that. the below example should work though.
+This is my fork of https://github.com/Magicjarvis/pizzapi
+It has been modified to add a new package called code_for_pizza.
 
-sorry! was kind of in a rush this morning.
+There are modifications to the original code, sorry! in advance for the messy documentation.
 
 Setup
 -----
@@ -14,8 +14,8 @@ Setup
 1. install python3
 2. download this repository
 3. install the requirements of the repository `pip install -r requirements.txt`
-4. start a python3 interpreter inside of the folder called pizzapy
-5. have fun
+4. start a python3 interpreter inside of the folder called pizzapy, so it will be in the PYTHONPATH
+5. import pizzapy and if it works, great !
 
 
 Description
@@ -28,66 +28,33 @@ It's a port of `the pizzapi node.js module <https://github.com/RIAEvangelist/nod
 Quick Start
 -----------
 
-First construct a ``Customer`` object and set the customer's address:
+First go to code_for_pizza/dominos_test_order.py and change the details in Customer to your details.
+
+The details already entered in the python file are a sample and do not actually work.
+
+Just replace the details inside the Customer block to yours.
 
 .. code-block:: python
 
-    customer = Customer('Barack', 'Obama', 'barack@whitehouse.gov', '2024561111', '700 Pennsylvania Avenue NW, Washington, DC, 20408')
+customer = Customer('Barack', 'Obama', 'barack@whitehouse.gov', '2024561111', '700 Pennsylvania Avenue NW, Washington, DC, 20408')
 
-Then, find a store that will deliver to the address.
-
-.. code-block:: python
-
-    my_local_dominos = StoreLocator.find_closest_store_to_customer(customer)
-
-In order to add items to your order, you'll need the items' product codes.
-To find the codes, get the menu from the store, then search for items you want to add.
-You can do this by asking your ``Store`` object for its ``Menu``.
+Now switch over to code_for_pizza/order_pizza.py and add your github user_id and password.
 
 .. code-block:: python
 
-    menu = my_local_dominos.get_menu()
+g = Github('your_username','your_password')
 
-Then search ``menu`` with ``menu.search``. For example, running this command:
+Then simply type the following command from the pizzapy folder, which is one folder up:
 
-.. code-block:: python
+.. code-block:: python3
 
-    menu.search(Name='Coke')
+python3.5 code_for_pizza/order_pizza.py
 
-Should print this to the console:
+And just like that it should place the order for you !
 
-.. code-block:: text
+Optional Step:
+--------------
 
-    20BCOKE    20oz Bottle Coke®        $1.89
-    20BDCOKE   20oz Bottle Diet Coke®   $1.89
-    D20BZRO    20oz Bottle Coke Zero™   $1.89
-    2LDCOKE    2-Liter Diet Coke®       $2.99
-    2LCOKE     2-Liter Coke®            $2.99
-
-After you've found your items' product codes, you can create an ``Order`` object add add your items:
-
-.. code-block:: python
-
-    order = Order.begin_customer_order(customer, my_local_dominos)
-    order.add_item('P12IPAZA') # add a 12-inch pan pizza
-    order.add_item('MARINARA') # with an extra marinara cup
-    order.add_item('20BCOKE')  # and a 20oz bottle of coke
-
-You can remove items as well!
-
-.. code-block:: python
-
-    order.remove_item('20BCOKE')
-
-Wrap your credit card information in a ``CreditCard``:
-
-.. code-block:: python
-
-    card = CreditCard('4100123422343234', '0115', '777', '90210')
-
-And that's it! Now you can place your order.
-
-.. code-block:: python
-
-    order.place(card)
-    my_local_dominos.place_order(order, card)
+1. You can put the user_id and password in a config file and read it programmatically from the python script,
+than just hardcoding it.
+2. Integrate twilio's API to send an SMS alert when an order is placed.

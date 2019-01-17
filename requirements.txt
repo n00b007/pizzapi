@@ -3,3 +3,5 @@ pyhamcrest
 xmltodict
 pytest
 mock
+twilio
+pygithub
